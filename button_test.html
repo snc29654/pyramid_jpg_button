@@ -1,0 +1,51 @@
+<!DOCtype html>
+<html lang="ja">
+<head>
+<title>Sample</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="sample.css" type="text/css">
+</head>
+<body>
+  <script>
+  var today=new Date(); 
+
+  var year = today.getFullYear();
+  var month = today.getMonth()+1;
+  var week = today.getDay();
+  var day = today.getDate();
+  
+  var week_ja= new Array("日","月","火","水","木","金","土");
+  
+  document.write(year+"年"+month+"月"+day+"日 "+week_ja[week]+"曜日");
+</script>
+<b>記録ノート</b>
+<br>
+<br>
+  <table width=80%%>
+    <tr>
+      <td COLSPAN=2>
+        <form method="post" action="http://localhost:6543">
+          <p>メモ帳への入力：
+          <div>   日付     <input type="text" name="date"> </div>
+          <div>   名前     <input type="text" name="name"></div>
+          <div>   天気     <input type="text" name="weather"></div>
+            <br>
+          </p>
+          <div>   題名     <input type="text" name="kind"></div>
+          <p><font color=#0000BB>内容：</font><br>
+            <textarea name="Contents" ROWS=10 COLS=50></textarea>
+            <br>
+          </p>
+            <input type="submit" value="登録">
+            <input type="reset" value="クリア">
+        </form>
+        <input type="date">
+      </td>
+    </tr>
+  </table>
+</center>
+<P>
+<center>
+</center>
+</body>
+</html>
