@@ -14,10 +14,13 @@ def diary_world(request):
     f = open(r"C:\xampp\htdocs\xampp\shishu\color_code.txt", "r")
 
     getdata=""
+    
+    getdata=getdata+"<style>.example2{ border: none;}</style>"
+
     for i in range(8000):
         rgb=f.readline()
         print(rgb)
-        getdata=getdata+"<input  type=\"button\" value=\" \" style=\"background-color:"+rgb+";\" ></input>"    
+        getdata=getdata+"<input  type=\"button\" value=\" \" style=\"background-color:"+rgb+";\" class=\"example2\" ></input>"    
         if(i%80)==79:
             getdata=getdata+"<br>"    
                         
