@@ -15,14 +15,65 @@ def diary_world(request):
 
     getdata=""
     
+    
+    
     getdata=getdata+"<style>.example2{ border: none;}</style>"
 
-    for i in range(8000):
+    getdata=getdata+"<input type=\"radio\" id=\"xxxx\" name=\"fruit\" value=\"copy\" onchange=\"func1()\">"
+    getdata=getdata+"<label for=\"xxxx\">コピー</label>"
+
+    getdata=getdata+"<input type=\"radio\" id=\"xxxx\" name=\"fruit\" value=\"paste\" onchange=\"func1()\">"
+    getdata=getdata+"<label for=\"xxxx\">貼り付け</label>"
+
+    getdata=getdata+"<input  type=\"button\" value=\"コピーした色\" id=999999 ></input><br>"
+
+    getdata=getdata+"<script language=\"javascript\" type=\"text/javascript\">"
+    getdata=getdata+"function func1() {"
+    getdata=getdata+"var fruits = document.getElementsByName(\"fruit\");for(var i = 0; i < fruits.length; i++){if(fruits[i].checked) {color=fruits[i].value; }}}"
+    getdata=getdata+"func1();"
+    getdata=getdata+"</script>"
+
+
+
+    for count in range(8000):
         rgb=f.readline()
-        print(rgb)
-        getdata=getdata+"<input  type=\"button\" value=\" \" style=\"background-color:"+rgb+";\" class=\"example2\" ></input>"    
-        if(i%80)==79:
+        #print(rgb)
+        getdata=getdata+"<input onclick=\"buttonClick(this.id)\"  type=\"button\" value=\" \" id="    
+        getdata=getdata+str(count)    
+        getdata=getdata+" style=\"background-color:"+rgb+";\" class=\"example2\" ></input>"    
+        if(count%80)==79:
             getdata=getdata+"<br>"    
+
+
+        getdata=getdata+ "<script>"
+
+
+        getdata=getdata+ "function buttonClick(count){"
+        getdata=getdata+ "if (color==\"copy\"){"
+        getdata=getdata+ "color_copy=document.getElementById(count).style.backgroundColor;"
+        getdata=getdata+ "document.getElementById(999999).style.backgroundColor = color_copy;"
+        getdata=getdata+ "}else if (color==\"paste\") {"      
+
+        getdata=getdata+ "document.getElementById(count).style.backgroundColor = color_copy;"
+
+        getdata=getdata+ "}else{";      
+        getdata=getdata+ "document.getElementById(count).style.backgroundColor = color;"
+        getdata=getdata+ "}"
+
+        getdata=getdata+ "}"        
+        getdata=getdata+ "</script>"
+
+
+
+
+
+
+
+
+
+
+
+
                         
     return Response(str(getdata))
 
