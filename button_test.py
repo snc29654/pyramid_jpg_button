@@ -7,9 +7,9 @@ dbname = '../database.db'
     
 def diary_world(request):
     in_data=request.params
-    name=in_data["name"]
+    row=in_data["row"]
     weather=in_data["weather"]
-    kind=in_data["kind"]
+    cols=in_data["cols"]
 
     f = open(r"C:\xampp\htdocs\xampp\shishu\color_code.txt", "r")
 
@@ -33,15 +33,15 @@ def diary_world(request):
     getdata=getdata+"func1();"
     getdata=getdata+"</script>"
 
+    count_max=int(cols)*int(row)
 
-
-    for count in range(8000):
+    for count in range(count_max):
         rgb=f.readline()
         #print(rgb)
         getdata=getdata+"<input onclick=\"buttonClick(this.id)\"  type=\"button\" value=\" \" id="    
         getdata=getdata+str(count)    
         getdata=getdata+" style=\"background-color:"+rgb+";\" class=\"example2\" ></input>"    
-        if(count%80)==79:
+        if((count%int(cols))==(int(cols)-1)):
             getdata=getdata+"<br>"    
 
 
