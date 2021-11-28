@@ -11,7 +11,7 @@ def diary_world(request):
     weather=in_data["weather"]
     cols=in_data["cols"]
 
-    f = open(r"C:\xampp\htdocs\xampp\shishu\color_code.txt", "r")
+    f = open(r"color_code.txt", "r")
 
     getdata=""
     
