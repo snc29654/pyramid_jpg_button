@@ -9,8 +9,12 @@ def diary_world(request):
     in_data=request.params
     row=in_data["row"]
     cols=in_data["cols"]
-    before=in_data["before"]
-    after=in_data["after"]
+    before_r=in_data["before_r"]
+    after_r=in_data["after_r"]
+    before_g=in_data["before_g"]
+    after_g=in_data["after_g"]
+    before_b=in_data["before_b"]
+    after_b=in_data["after_b"]
 
     f = open(r"color_code.txt", "r")
 
@@ -38,12 +42,27 @@ def diary_world(request):
 
     for count in range(count_max):
         rgb=f.readline()
-        tbl=rgb.maketrans(before, after)  
-        rgb = rgb.translate(tbl)
+        #print(rgb[:3])
+        #print(rgb[3:5])
+        #print(rgb[5:])
+        r=rgb[:3]
+        g=rgb[3:5]
+        b=rgb[5:]
+
+        tblr=r.maketrans(before_r, after_r)  
+        r = r.translate(tblr)
+
+        tblg=g.maketrans(before_g, after_g)  
+        g = g.translate(tblg)
+
+        tblb=b.maketrans(before_b, after_b)  
+        b = b.translate(tblb)
+
+        concat_rgb = r+g+b
         #print(rgb)
         getdata=getdata+"<input onclick=\"buttonClick(this.id)\"  type=\"button\" value=\" \" id="    
         getdata=getdata+str(count)    
-        getdata=getdata+" style=\"background-color:"+rgb+";\" class=\"example2\" ></input>"    
+        getdata=getdata+" style=\"background-color:"+concat_rgb+";\" class=\"example2\" ></input>"    
         if((count%int(cols))==(int(cols)-1)):
             getdata=getdata+"<br>"    
 
