@@ -8,8 +8,9 @@ dbname = '../database.db'
 def diary_world(request):
     in_data=request.params
     row=in_data["row"]
-    weather=in_data["weather"]
     cols=in_data["cols"]
+    before=in_data["before"]
+    after=in_data["after"]
 
     f = open(r"color_code.txt", "r")
 
@@ -37,6 +38,8 @@ def diary_world(request):
 
     for count in range(count_max):
         rgb=f.readline()
+        tbl=rgb.maketrans(before, after)  
+        rgb = rgb.translate(tbl)
         #print(rgb)
         getdata=getdata+"<input onclick=\"buttonClick(this.id)\"  type=\"button\" value=\" \" id="    
         getdata=getdata+str(count)    
