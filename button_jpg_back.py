@@ -134,7 +134,7 @@ class color_button(ttk.Combobox):
                 
         column = -1
         row = 0
-        for i in range(column_max*row_max):
+        for i in range(column_max*row_max+1):
             self.counter=str(i)
             if i > 0:
                 if i%column_max == 1:
