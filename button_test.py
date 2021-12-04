@@ -24,7 +24,7 @@ def diary_world(request):
     
     getdata=getdata+"<style>.example2{ border: none;}</style>"
 
-    getdata=getdata+"<input type=\"radio\" id=\"xxxx\" name=\"fruit\" value=\"copy\" onchange=\"func1()\">"
+    getdata=getdata+"<input type=\"radio\" id=\"xxxx\" name=\"fruit\" value=\"copy\" checked=\"checked\" onchange=\"func1()\">"
     getdata=getdata+"<label for=\"xxxx\">コピー</label>"
 
     getdata=getdata+"<input type=\"radio\" id=\"xxxx\" name=\"fruit\" value=\"paste\" onchange=\"func1()\">"
