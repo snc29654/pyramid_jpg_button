@@ -34,7 +34,7 @@ class color_button(ttk.Combobox):
 
         self.end=0
         self.button_disp=0
-
+        self.mono=0
 # テキストボックス
         self.txt1 = tkinter.Entry(width=5)
         self.txt1.place(x=1000, y=150)
@@ -69,7 +69,7 @@ class color_button(ttk.Combobox):
 
         button3= Button(root, text=u'ファイル選択', font=24,command=self.button3_clicked)  
         button3.grid(row=0, column=1)  
-        button3.place(x=950, y=70) 
+        button3.place(x=950, y=30) 
         
     
         
@@ -92,16 +92,20 @@ class color_button(ttk.Combobox):
         if(self.filenames != ""):
             button4= Button(root, text=u'表示', font=24,command=self.button4_clicked,bg='#f0e68c')  
             button4.grid(row=0, column=1)  
-            button4.place(x=950, y=110) 
+            button4.place(x=950, y=70) 
  
-            button4= Button(root, text=u'変換', font=24,command=self.button5_clicked,bg='#f0e68c')  
-            button4.grid(row=0, column=1)  
-            button4.place(x=1000, y=110) 
+            button5= Button(root, text=u'変換', font=24,command=self.button5_clicked,bg='#f0e68c')  
+            button5.grid(row=0, column=1)  
+            button5.place(x=1020, y=70) 
 
+            button6= Button(root, text=u'白黒変換', font=24,command=self.button6_clicked,bg='#f0e68c')  
+            button6.grid(row=0, column=1)  
+            button6.place(x=950, y=110) 
 
 
     def button4_clicked(self):  
         self.button_disp=1
+        self.mono=0
         thread1 = threading.Thread(target=self.setnumber)
         thread1.start()
         thread2 = threading.Thread(target=self.update_counter)
@@ -109,10 +113,20 @@ class color_button(ttk.Combobox):
 
     def button5_clicked(self):  
         self.button_disp=0
+        self.mono=0
         thread1 = threading.Thread(target=self.setnumber)
         thread1.start()
         thread2 = threading.Thread(target=self.update_counter)
         thread2.start()
+
+
+    def button6_clicked(self):  
+        self.mono=1
+        thread1 = threading.Thread(target=self.setnumber)
+        thread1.start()
+        thread2 = threading.Thread(target=self.update_counter)
+        thread2.start()
+
 
 
 
@@ -150,7 +164,11 @@ class color_button(ttk.Combobox):
                     btn = tk.Button(root, text="    ")
                     btn.grid(column=column, row=row)
                     btn.config(command=self.collback(btn),bg=self.from_rgb_to_colorcode((self.r, self.g, self.b)))
-                self.f.write(self.from_rgb_to_colorcode((self.r, self.g, self.b))+"\n")
+                if(self.mono==0):    
+                    self.f.write(self.from_rgb_to_colorcode((self.r, self.g, self.b))+"\n")
+                else:
+                    self.f.write(self.from_rgb_to_colorcode((self.r, self.r, self.r))+"\n")
+                    
         self.f.close()
         self.counter="end"
         self.end=1
