@@ -87,7 +87,6 @@ class color_button(ttk.Combobox):
         fTyp = [('', '*')] 
         iDir = os.path.abspath(os.path.dirname(__file__)) 
         self.filenames = tkFileDialog.askopenfilenames(filetypes= [("JPEG", ".jpg")], initialdir=iDir)
-        self.f = open(r"color_code.txt", "w")
 
         if(self.filenames != ""):
             button4= Button(root, text=u'表示', font=24,command=self.button4_clicked,bg='#f0e68c')  
@@ -115,6 +114,7 @@ class color_button(ttk.Combobox):
             button9.place(x=950, y=500) 
 
     def button4_clicked(self):  
+        self.f = open(r"color_code.txt", "w")
         self.button_disp=1
         self.mono=0
         thread1 = threading.Thread(target=self.setnumber)
@@ -123,6 +123,7 @@ class color_button(ttk.Combobox):
         thread2.start()
 
     def button5_clicked(self):  
+        self.f = open(r"color_code.txt", "w")
         self.button_disp=0
         self.mono=0
         thread1 = threading.Thread(target=self.setnumber)
@@ -132,6 +133,7 @@ class color_button(ttk.Combobox):
 
 
     def button6_clicked(self):  
+        self.f = open(r"color_code.txt", "w")
         self.mono=1
         thread1 = threading.Thread(target=self.setnumber)
         thread1.start()
@@ -139,6 +141,7 @@ class color_button(ttk.Combobox):
         thread2.start()
 
     def button7_clicked(self):  
+        self.f = open(r"color_code.txt", "w")
         self.mono=2
         thread1 = threading.Thread(target=self.setnumber)
         thread1.start()
@@ -146,6 +149,7 @@ class color_button(ttk.Combobox):
         thread2.start()
 
     def button8_clicked(self):  
+        self.f = open(r"color_code.txt", "w")
         self.mono=3
         thread1 = threading.Thread(target=self.setnumber)
         thread1.start()
@@ -153,6 +157,7 @@ class color_button(ttk.Combobox):
         thread2.start()
 
     def button9_clicked(self):  
+        self.f = open(r"color_code.txt", "w")
         self.mono=4
         thread1 = threading.Thread(target=self.setnumber)
         thread1.start()
